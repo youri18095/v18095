@@ -482,8 +482,8 @@ def calc_multiplier(attack_type, defend_types):
         multiplier *= type_chart.get(attack_type, {}).get(d, 1)
     return multiplier
 
-if st.button("計算"):
-
+if 技 and 攻撃ポケモン and 防御ポケモン:
+    
     atk1 = poke_skill[技]["威力"]
 
     hp = poke_stats[防御ポケモン]["stats"][0] + 75 + point_3

@@ -459,7 +459,7 @@ type_chart = {
 # UI
 # ========================
 
-col1, space, col2 = st.columns([3,1,3])
+col1, space, col2 = st.columns([5,1,5])
 
 with col1 :
     攻撃ポケモン = st.selectbox("攻撃ポケモン", list(poke_stats.keys()))

@@ -463,7 +463,7 @@ col1, col2 = st.columns(2)
 
 with col1 :
     攻撃ポケモン = st.selectbox("攻撃ポケモン", list(poke_stats.keys()))
-    point_1 = st.number_input("攻撃側 基礎ポイント", 0, 252, 0)
+    point_1 = st.number_input("攻撃側 基礎ポイント", 0, 32, 0)
     技 = st.selectbox("技", list(poke_skill.keys()))
 
 with col2 :

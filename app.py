@@ -506,13 +506,13 @@ if poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"][0] or 
 else:
     stab = 1
 
-    base = int(int(22 * atk1 * atk2 / dif1) / 50 + 2)
+base = int(int(22 * atk1 * atk2 / dif1) / 50 + 2)
 
-    damage1 = int( round( int(base * 0.85 ) * stab ) * 相性倍率)
-    damage2 = int( round(base * stab ) * 相性倍率)
+damage1 = int( round( int(base * 0.85 ) * stab ) * 相性倍率)
+damage2 = int( round(base * stab ) * 相性倍率)
 
-    damage3 = round((damage1*10 / hp) * 100)/10
-    damage4 = round((damage2*10 / hp) * 100)/10
+damage3 = round((damage1*10 / hp) * 100)/10
+damage4 = round((damage2*10 / hp) * 100)/10
 
 
 def hp_bar(damage_min, damage_max, hp):

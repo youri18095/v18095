@@ -548,7 +548,7 @@ def hp_bar(damage_min, damage_max, hp):
 
 hp_bar(damage1, damage2, hp)
     
-    st.subheader("結果")
-    st.write(f"ダメージ: {damage1} ~ {damage2}")
-    st.write(f"割合: {damage3}% ~ {damage4}%")
-    st.write(f"相性倍率: {相性倍率}")
+st.subheader("結果")
+st.write(f"ダメージ: {damage1} ~ {damage2}")
+st.write(f"割合: {damage3}% ~ {damage4}%")
+st.write(f"相性倍率: {相性倍率}")

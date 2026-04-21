@@ -511,8 +511,8 @@ if st.button("計算"):
     damage1 = int( round( int(base * 0.85 ) * stab ) * 相性倍率)
     damage2 = int( round(base * stab ) * 相性倍率)
 
-    damage3 = int((damage1 / hp) * 100)
-    damage4 = int((damage2 / hp) * 100)
+    damage3 = round((damage1 / hp) * 100)
+    damage4 = round((damage2 / hp) * 100)
 
     st.subheader("結果")
     st.write(f"ダメージ: {damage1} ~ {damage2}")

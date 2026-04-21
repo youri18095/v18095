@@ -459,16 +459,16 @@ type_chart = {
 # UI
 # ========================
 
-col1, space, col2 = st.columns([5,1,5])
+col1, space, col2 = st.columns([6,1,6])
 
 with col1 :
     攻撃ポケモン = st.selectbox("攻撃ポケモン", list(poke_stats.keys()))
-    point_1 = st.number_input("攻撃側 基礎ポイント", 0, 32, 0)
+    point_1 = st.slider("攻撃側 基礎ポイント", 0, 32, 0)
     技 = st.selectbox("技", list(poke_skill.keys()))
 
 with col2 :
     防御ポケモン = st.selectbox("防御ポケモン", list(poke_stats.keys()))
-    point_2 = st.number_input("防御側 基礎ポイント", 0, 32, 0)
+    point_2 = st.slider("防御側 基礎ポイント", 0, 32, 0)
     point_3 = st.number_input("HP 基礎ポイント", 0, 32, 0)
     
 

@@ -545,6 +545,8 @@ def hp_bar(damage_min, damage_max, hp):
 
     st.write(f"残りHP: {remain_min} ~ {remain_max}")
 
+    hp_bar(damage1, damage2, hp)
+
     st.subheader("結果")
     st.write(f"ダメージ: {damage1} ~ {damage2}")
     st.write(f"割合: {damage3}% ~ {damage4}%")

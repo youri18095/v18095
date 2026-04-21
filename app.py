@@ -469,7 +469,7 @@ with col1 :
 with col2 :
     防御ポケモン = st.selectbox("防御ポケモン", list(poke_stats.keys()))
     point_2 = st.slider("防御側 基礎ポイント", 0, 32, 0)
-    point_3 = st.number_input("HP 基礎ポイント", 0, 32, 0)
+    point_3 = st.slider("HP 基礎ポイント", 0, 32, 0)
     
 
 # ========================
@@ -513,6 +513,37 @@ if 技 and 攻撃ポケモン and 防御ポケモン:
 
     damage3 = round((damage1*10 / hp) * 100)/10
     damage4 = round((damage2*10 / hp) * 100)/10
+
+def hp_bar(damage_min, damage_max, hp):
+
+    remain_min = max(hp - damage_max, 0)  # 最大ダメ後
+    remain_max = max(hp - damage_min, 0)  # 最小ダメ後
+
+    percent_min = remain_min / hp * 100
+    percent_max = remain_max / hp * 100
+
+    bar_html = f"""
+    <div style="width:100%; background-color:#ddd; border-radius:10px; overflow:hidden;">
+        <div style="
+            width:{percent_max}%;
+            background-color:limegreen;
+            height:25px;
+            position:relative;
+        ">
+            <div style="
+                position:absolute;
+                right:0;
+                width:{percent_max - percent_min}%;
+                background-color:red;
+                height:100%;
+            "></div>
+        </div>
+    </div>
+    """
+
+    st.markdown(bar_html, unsafe_allow_html=True)
+
+    st.write(f"残りHP: {remain_min} ~ {remain_max}")
 
     st.subheader("結果")
     st.write(f"ダメージ: {damage1} ~ {damage2}")

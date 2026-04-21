@@ -459,13 +459,18 @@ type_chart = {
 # UI
 # ========================
 
-技 = st.selectbox("技", list(poke_skill.keys()))
-攻撃ポケモン = st.selectbox("攻撃ポケモン", list(poke_stats.keys()))
-防御ポケモン = st.selectbox("防御ポケモン", list(poke_stats.keys()))
+col1, col2 = st.columns(2)
 
-point_1 = st.number_input("攻撃側 基礎ポイント", 0, 252, 0)
-point_2 = st.number_input("防御側 基礎ポイント", 0, 252, 0)
-point_3 = st.number_input("HP 基礎ポイント", 0, 252, 0)
+with col1 :
+    攻撃ポケモン = st.selectbox("攻撃ポケモン", list(poke_stats.keys()))
+    point_1 = st.number_input("攻撃側 基礎ポイント", 0, 252, 0)
+    技 = st.selectbox("技", list(poke_skill.keys()))
+
+with col2 :
+    防御ポケモン = st.selectbox("防御ポケモン", list(poke_stats.keys()))
+    point_2 = st.number_input("防御側 基礎ポイント", 0, 32, 0)
+    point_3 = st.number_input("HP 基礎ポイント", 0, 32, 0)
+    
 
 # ========================
 # 計算
@@ -496,12 +501,12 @@ if st.button("計算"):
     )
 
     # STAB
-    if poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"]:
+    if poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"][0] or poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"][1] :
         stab = 1.5
     else:
         stab = 1
 
-    base = int((22 * atk1 * atk2 / dif1) / 50 + 2)
+    base = int(int(22 * atk1 * atk2 / dif1) / 50 + 2)
 
     damage1 = int(base * 0.85 * stab * 相性倍率)
     damage2 = int(base * stab * 相性倍率)

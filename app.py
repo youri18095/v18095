@@ -501,7 +501,7 @@ if 技 and 攻撃ポケモン and 防御ポケモン:
     )
 
     # STAB
-    if poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"][0] or poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"][1] :
+if poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"][0] or poke_skill[技]["タイプ"] in poke_stats[攻撃ポケモン]["type"][1] :
         stab = 1.5
     else:
         stab = 1

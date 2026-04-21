@@ -514,6 +514,8 @@ if 技 and 攻撃ポケモン and 防御ポケモン:
     damage3 = round((damage1*10 / hp) * 100)/10
     damage4 = round((damage2*10 / hp) * 100)/10
 
+hp_bar(damage1, damage2, hp)
+
 def hp_bar(damage_min, damage_max, hp):
 
     remain_min = max(hp - damage_max, 0)  # 最大ダメ後
@@ -545,7 +547,6 @@ def hp_bar(damage_min, damage_max, hp):
 
     st.write(f"残りHP: {remain_min} ~ {remain_max}")
 
-    hp_bar(damage1, damage2, hp)
 
     st.subheader("結果")
     st.write(f"ダメージ: {damage1} ~ {damage2}")

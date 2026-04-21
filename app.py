@@ -514,38 +514,68 @@ damage2 = int( round(base * stab ) * 相性倍率)
 damage3 = round((damage1*10 / hp) * 100)/10
 damage4 = round((damage2*10 / hp) * 100)/10
 
-
 def hp_bar(damage_min, damage_max, hp):
 
-    remain_min = max(hp - damage_max, 0)  # 最大ダメ後
-    remain_max = max(hp - damage_min, 0)  # 最小ダメ後
+    remain_min = max(hp - damage_max, 0)
+    remain_max = max(hp - damage_min, 0)
 
     percent_min = remain_min / hp * 100
     percent_max = remain_max / hp * 100
 
+    # 色（ポケモン風）
+    if percent_min > 50:
+        color = "#4CAF50"
+    elif percent_min > 20:
+        color = "#FFC107"
+    else:
+        color = "#F44336"
+
     bar_html = f"""
-    <div style="width:100%; background-color:#ddd; border-radius:10px; overflow:hidden;">
+    <div style="width:100%; background:#ddd; border-radius:12px; overflow:hidden; position:relative;">
+        
+        <!-- HP本体 -->
         <div style="
             width:{percent_max}%;
-            background-color:limegreen;
-            height:25px;
+            height:30px;
+            background:{color};
             position:relative;
         ">
+
+            <!-- ダメージ部分 -->
             <div style="
                 position:absolute;
                 right:0;
                 width:{percent_max - percent_min}%;
-                background-color:red;
                 height:100%;
+                background:#F44336;
+                opacity:0.7;
             "></div>
+
         </div>
+
+        <!-- 10%ごとの区切り線 -->
+        <div style="
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: repeating-linear-gradient(
+                to right,
+                transparent,
+                transparent calc(10% - 1px),
+                black calc(10% - 1px),
+                black 10%
+            );
+            pointer-events:none;
+        "></div>
+
     </div>
     """
 
     st.markdown(bar_html, unsafe_allow_html=True)
 
     st.write(f"残りHP: {remain_min} ~ {remain_max}")
-
 
     
 st.subheader("結果")

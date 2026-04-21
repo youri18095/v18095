@@ -508,8 +508,8 @@ if st.button("計算"):
 
     base = int(int(22 * atk1 * atk2 / dif1) / 50 + 2)
 
-    damage1 = int(base * 0.85 * stab * 相性倍率)
-    damage2 = int(base * stab * 相性倍率)
+    damage1 = int( round( int(base * 0.85 ) * stab ) * 相性倍率)
+    damage2 = int( round(base * stab ) * 相性倍率)
 
     damage3 = int((damage1 / hp) * 100)
     damage4 = int((damage2 / hp) * 100)

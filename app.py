@@ -575,9 +575,9 @@ def hp_bar(damage_min, damage_max, hp):
     </div>
     """
 
-    st.markdown(bar_html, unsafe_allow_html=True)
+st.markdown(bar_html, unsafe_allow_html=True)
 
-    st.write(f"残りHP: {remain_min} ~ {remain_max}")
+st.write(f"残りHP: {remain_min} ~ {remain_max}")
 
     
 st.subheader("結果")

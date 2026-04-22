@@ -482,7 +482,7 @@ with col2 :
 
 atk_mag = int(mag[select1]*10)/10
 
-dif_mag = int(mag[select2])*10)/10
+dif_mag = int(mag[select2]*10)/10
     
 # ========================
 # 計算

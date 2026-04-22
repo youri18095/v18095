@@ -548,7 +548,7 @@ count=0
 
 if damage_rand[0]>=hp:
     damage_d="確定1発"
-elif damage_rand[0]>=hp:
+elif damage_rand[15]>=hp:
     for i in range(16):
         if damage_rand[i-1]>=hp:
             num_d=((17-i)/16)*100

@@ -598,7 +598,13 @@ if "damage1" in locals() and hp > 0:
     st.subheader("結果")
     
     hp_bar(damage1, damage2, hp)    
-    st.write(f"残りHP: {hp-damage2} ~ {hp-damage1}")
-
+    
+    if hp-damage1 < 0:
+        st.write(f"残りHP: 0 ")
+    elif hp-damage2 < 0:
+        st.write(f"残りHP: {hp-damage1} ")
+    else :
+        st.write(f"残りHP: {hp-damage2} ~ {hp-damage1} ")
+    
     st.write(f"ダメージ: {damage1} ~ {damage2}", f"（{damage3} ~ {damage4}%）")
     st.write(f"相性倍率: {相性倍率}")

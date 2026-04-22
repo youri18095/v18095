@@ -530,7 +530,7 @@ rand_min=0.85
 rand_in=0.01
 
 for i in range(16):
-    rand_min = rand_min+i
+    rand_min = rand_min+rand_in
     damage_r=int( round( int(base * rand_min ) * stab ) * 相性倍率)
     damage_rand.append(damage_r)
 

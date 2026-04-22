@@ -602,7 +602,7 @@ if "damage1" in locals() and hp > 0:
     if hp-damage1 < 0:
         st.write(f"残りHP: 0 ")
     elif hp-damage2 < 0:
-        st.write(f"残りHP: {hp-damage1} ")
+        st.write(f"残りHP: 0 ~ {hp-damage1} ")
     else :
         st.write(f"残りHP: {hp-damage2} ~ {hp-damage1} ")
     

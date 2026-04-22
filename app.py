@@ -646,7 +646,6 @@ if "damage1" in locals() and hp > 0:
     st.subheader("結果")
 
     st.write(damage_d)
-
     hp_bar(damage1, damage2, hp)    
     
     if hp-damage1 < 0:
@@ -656,6 +655,6 @@ if "damage1" in locals() and hp > 0:
     else :
         st.write(f"残りHP: {hp-damage2} ~ {hp-damage1} ")
     
-    st.write(f"ダメージ: {damage_rand[0]} ~ {damage_rand[16]}", f"（{damage3} ~ {damage4}%）")
+    st.write(f"ダメージ: {damage_rand[0]} ~ {damage_rand[15]}", f"（{damage3} ~ {damage4}%）")
     st.write(f"相性倍率: {相性倍率}")
     st.write(damage_rand)

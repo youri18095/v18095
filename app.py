@@ -525,6 +525,11 @@ damage2 = int( round(base * stab ) * 相性倍率)
 damage3 = round((damage1*10 / hp) * 100)/10
 damage4 = round((damage2*10 / hp) * 100)/10
 
+
+# ========================
+# 確定数
+# ========================
+
 damage_rand=[]
 rand_min=0.85
 rand_in=0.01
@@ -533,6 +538,40 @@ for i in range(16):
     rand_min = rand_min+rand_in
     damage_r=int( round( int(base * rand_min ) * stab ) * 相性倍率)
     damage_rand.append(damage_r)
+
+
+damage_d=" "
+damage_list=[]
+num_d=0
+num=0
+
+if damage_rand[0]>=hp:
+    damage_d="確定1発"
+elif damage_rand[0]>=hp:
+    for i in range(16):
+        if damage_rand[i-1]>=hp:
+            num_d=((17-i)/16)*100
+            damage=f"乱数1発（{num_d}%） " 
+            break
+else :
+    num=int(hp/damage_rand[15])+1
+    if damage_rand[0]*num>=hp:
+        damage_d=f"確定{num}発"
+    elif damage_rand[15]*2:
+        for i in range(16):
+            for j in range(16):
+                damage_list.append(damage_rand[i]+damage_rand[j])
+        count=len([n for n in damage_list if n >= hp])
+        num_d=((257-i)/256)*100
+        damage_d=f"乱数{num}発（{num_d}%）"
+    else:
+        damage_d=f"乱数{num}発"
+            
+        
+
+# ========================
+# ダメージバー
+# ========================
 
 import streamlit as st
 import streamlit.components.v1 as components
@@ -605,7 +644,9 @@ def hp_bar(damage_min, damage_max, hp):
 if "damage1" in locals() and hp > 0:
 
     st.subheader("結果")
-    
+
+    st.write(damage_d)
+
     hp_bar(damage1, damage2, hp)    
     
     if hp-damage1 < 0:
@@ -615,6 +656,6 @@ if "damage1" in locals() and hp > 0:
     else :
         st.write(f"残りHP: {hp-damage2} ~ {hp-damage1} ")
     
-    st.write(f"ダメージ: {damage1} ~ {damage2}", f"（{damage3} ~ {damage4}%）")
+    st.write(f"ダメージ: {damage_rand[0]} ~ {damaga_rand[16]}", f"（{damage3} ~ {damage4}%）")
     st.write(f"相性倍率: {相性倍率}")
     st.write(damage_rand)

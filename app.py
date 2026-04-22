@@ -525,6 +525,15 @@ damage2 = int( round(base * stab ) * 相性倍率)
 damage3 = round((damage1*10 / hp) * 100)/10
 damage4 = round((damage2*10 / hp) * 100)/10
 
+damage_rand=[]
+rand_min=0.85
+rand_in=0.01
+
+for i range(16):
+    rand_min = rand_min+(rand_in*i)
+    damage_r=int( round( int(base * rand_min ) * stab ) * 相性倍率)
+    damage_rand.append(damage_r)
+
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -608,3 +617,4 @@ if "damage1" in locals() and hp > 0:
     
     st.write(f"ダメージ: {damage1} ~ {damage2}", f"（{damage3} ~ {damage4}%）")
     st.write(f"相性倍率: {相性倍率}")
+    st.write(damage_rand)

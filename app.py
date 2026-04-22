@@ -571,11 +571,11 @@ def hp_bar(damage_min, damage_max, hp):
                 black 10%
             );
         "></div>
-
+    st.markdown(bar_html, unsafe_allow_html=True)
     </div>
     """
 
-    st.markdown(bar_html, unsafe_allow_html=True)
+    
 
     st.write(f"残りHP: {remain_min} ~ {remain_max}")
 

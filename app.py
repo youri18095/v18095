@@ -480,6 +480,8 @@ with col1 :
 with col2 :
     point_3 = st.slider("HP 基礎ポイント", 0, 32, 0)
 
+mag_a = mag[atk_mag]
+mag_d = mag[dif_mag]
     
 # ========================
 # 計算
@@ -498,8 +500,8 @@ if 技 and 攻撃ポケモン and 防御ポケモン:
     hp = poke_stats[防御ポケモン]["stats"][0] + 75 + point_3
 
     if poke_skill[技]["分類"] == "物理":
-        atk2 = int((poke_stats[攻撃ポケモン]["stats"][1] + 20 + point_1)*atk_mag)
-        dif1 = int((poke_stats[防御ポケモン]["stats"][2] + 20 + point_2)*dif_mag)
+        atk2 = int((poke_stats[攻撃ポケモン]["stats"][1] + 20 + point_1)*mag_a)
+        dif1 = int((poke_stats[防御ポケモン]["stats"][2] + 20 + point_2)*mag_d)
     else:
         atk2 = int((poke_stats[攻撃ポケモン]["stats"][3] + 20 + point_1)*atk_mag)
         dif1 = int((poke_stats[防御ポケモン]["stats"][4] + 20 + point_2)*dif_mag)

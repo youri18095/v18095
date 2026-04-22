@@ -588,11 +588,10 @@ def hp_bar(damage_min, damage_max, hp):
 
 
 
-    st.title("HPバー")
-    hp_bar(damage1, damage2, hp)
-    
+st.title("HPバー")
+hp_bar(damage1, damage2, hp)    
 
-    st.write(f"残りHP: {remain_min} ~ {remain_max}")
+st.write(f"残りHP: {remain_min} ~ {remain_max}")
 
     
 if "damage1" in locals() and hp > 0:

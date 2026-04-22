@@ -503,8 +503,8 @@ if 技 and 攻撃ポケモン and 防御ポケモン:
         atk2 = int((poke_stats[攻撃ポケモン]["stats"][1] + 20 + point_1)*mag_a)
         dif1 = int((poke_stats[防御ポケモン]["stats"][2] + 20 + point_2)*mag_d)
     else:
-        atk2 = int((poke_stats[攻撃ポケモン]["stats"][3] + 20 + point_1)*atk_mag)
-        dif1 = int((poke_stats[防御ポケモン]["stats"][4] + 20 + point_2)*dif_mag)
+        atk2 = int((poke_stats[攻撃ポケモン]["stats"][3] + 20 + point_1)*mag_a)
+        dif1 = int((poke_stats[防御ポケモン]["stats"][4] + 20 + point_2)*mag_d)
 
     相性倍率 = calc_multiplier(
         poke_skill[技]["タイプ"],

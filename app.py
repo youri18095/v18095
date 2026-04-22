@@ -550,20 +550,20 @@ if damage_rand[0]>=hp:
     damage_d="確定1発"
 elif damage_rand[15]>=hp:
     for i in range(16):
-        if damage_rand[i-1]>=hp:
-            num_d=((17-i)/16)*100
+        if damage_rand[i]>=hp:
+            num_d=((16-i)/16)*100
             damage_d=f"乱数1発（{num_d}%） " 
             break
 else :
     num=int(hp/damage_rand[15])+1
     if damage_rand[0]*num>=hp:
         damage_d=f"確定{num}発"
-    elif damage_rand[15]*2:
+    elif damage_rand[15]*2>=hp:
         for i in range(16):
             for j in range(16):
                 damage_list.append(damage_rand[i]+damage_rand[j])
         count=len([n for n in damage_list if n >= hp])
-        num_d=((257-count)/256)*100
+        num_d=(count/256)*100
         damage_d=f"乱数{num}発（{num_d}%）"
     else:
         damage_d=f"乱数{num}発"

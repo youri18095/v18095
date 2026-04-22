@@ -552,7 +552,7 @@ elif damage_rand[15]>=hp:
     for i in range(16):
         if damage_rand[i-1]>=hp:
             num_d=((17-i)/16)*100
-            damage=f"乱数1発（{num_d}%） " 
+            damage_d=f"乱数1発（{num_d}%） " 
             break
 else :
     num=int(hp/damage_rand[15])+1

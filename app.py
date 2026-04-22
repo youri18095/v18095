@@ -534,32 +534,27 @@ def hp_bar(damage_min, damage_max, hp):
     damage_width = max(percent_max - percent_min, 0)
 
     # 色
-    if percent_min > 50:
-        color = "#4CAF50"
-    elif percent_min > 20:
-        color = "#FFC107"
-    else:
-        color = "#F44336"
+    
+
 
     bar_html = f"""
     <div style="position:relative; width:100%; height:30px; background:#ddd; border-radius:10px; overflow:hidden;">
 
-        <!-- HP本体 -->
+        <!-- 残りHP（緑） -->
         <div style="
             width:{percent_max}%;
             height:100%;
-            background:{color};
+            background:#4CAF50;
             position:absolute;
             left:0;
             top:0;
         "></div>
 
-        <!-- ダメージ部分 -->
+        <!-- 乱数ダメージ（赤） -->
         <div style="
             width:{damage_width}%;
             height:100%;
             background:#F44336;
-            opacity:0.6;
             position:absolute;
             left:{percent_min}%;
             top:0;
@@ -587,17 +582,12 @@ def hp_bar(damage_min, damage_max, hp):
     components.html(bar_html, height=35)
 
 
-
-
-
-
-    
 if "damage1" in locals() and hp > 0:
 
     st.subheader("結果")
     
     hp_bar(damage1, damage2, hp)    
-    st.write(f"残りHP: {hp-damage1} ~ {hp-damage2}")
+    st.write(f"残りHP: {hp-damage2} ~ {hp-damage1}")
 
     st.write(f"ダメージ: {damage1} ~ {damage2}", f"（{damage3} ~ {damage4}%）")
     st.write(f"相性倍率: {相性倍率}")

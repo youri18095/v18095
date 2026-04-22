@@ -514,70 +514,10 @@ damage2 = int( round(base * stab ) * 相性倍率)
 damage3 = round((damage1*10 / hp) * 100)/10
 damage4 = round((damage2*10 / hp) * 100)/10
 
-import streamlit as st
-
-def hp_bar(damage_min, damage_max, hp):
-
-    remain_min = max(hp - damage_max, 0)
-    remain_max = max(hp - damage_min, 0)
-
-    percent_min = remain_min / hp * 100
-    percent_max = remain_max / hp * 100
-
-    # 色
-    if percent_min > 50:
-        color = "#4CAF50"
-    elif percent_min > 20:
-        color = "#FFC107"
-    else:
-        color = "#F44336"
-
-    bar_html = f"""
-    <div style="position:relative; width:100%; height:30px; background:#ddd; border-radius:10px; overflow:hidden;">
-
-        <!-- HP本体 -->
-        <div style="
-            width:{percent_max}%;
-            height:100%;
-            background:{color};
-            position:absolute;
-            left:0;
-            top:0;
-        "></div>
-
-        <!-- ダメージ部分 -->
-        <div style="
-            width:{percent_max - percent_min}%;
-            height:100%;
-            background:#F44336;
-            opacity:0.6;
-            position:absolute;
-            left:{percent_min}%;
-            top:0;
-        "></div>
-
-        <!-- 区切り線 -->
-        <div style="
-            position:absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            background: repeating-linear-gradient(
-                to right,
-                rgba(0,0,0,0),
-                rgba(0,0,0,0) calc(10% - 1px),
-                black calc(10% - 1px),
-                black 10%
-            );
-        "></div>
-    st.markdown(bar_html, unsafe_allow_html=True)
-    </div>
-    """
 
     
 
-    st.write(f"残りHP: {remain_min} ~ {remain_max}")
+st.write(f"残りHP: {remain_min} ~ {remain_max}")
 
     
 if "damage1" in locals() and hp > 0:

@@ -468,17 +468,21 @@ col1,col2, space, col3,col4 = st.columns([5,2,1,5,2])
 with col1 :
     point_1 = st.slider("攻撃側 基礎ポイント", 0, 32, 0)
 with col2 :
-    atk_mag = int(st.selectbox("攻撃倍率",list(mag.keys())))
+    select1 = st.selectbox("攻撃倍率",list(mag.keys()))
 with col3 :
     point_2 = st.slider("防御側 基礎ポイント", 0, 32, 0)
 with col4 :
-    dif_mag = int(st.selectbox("防御倍率",list(mag.keys())))
+    select2 = st.selectbox("防御倍率",list(mag.keys()))
 
 col1,space,col2= st.columns([6,1,6])
 with col1 :
     技 = st.selectbox("技", list(poke_skill.keys()))
 with col2 :
     point_3 = st.slider("HP 基礎ポイント", 0, 32, 0)
+
+atk_mag = int(mag[select1]*10)/10
+
+dif_mag = int(mag[select2])*10)/10
     
 # ========================
 # 計算

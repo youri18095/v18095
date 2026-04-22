@@ -238,6 +238,7 @@ poke_skill = {
     "やきつくす": {"分類": "特殊", "威力": 60, "タイプ": "ほのお"},
 
     # みず
+    "ウェーブタックル":{"分類": "物理","威力": 120,"タイプ": "みず"}
     "クラブハンマー": {"分類": "物理", "威力": 100, "タイプ": "みず"},
     "アクアテール": {"分類": "物理", "威力": 90, "タイプ": "みず"},
     "アクアブレイク": {"分類": "物理", "威力": 85, "タイプ": "みず"},
@@ -267,6 +268,7 @@ poke_skill = {
 
     # くさ
     "リーフブレード": {"分類": "物理", "威力": 90, "タイプ": "くさ"},
+    "くさわけ": {"分類": "物理", "威力":50 , "タイプ": "くさ"},
     "エナジーボール": {"分類": "特殊", "威力": 90, "タイプ": "くさ"},
 
     # こおり
@@ -385,6 +387,7 @@ poke_skill = {
     "たたりめ": {"分類": "特殊", "威力": 65, "タイプ": "ゴースト"},
 
     # ドラゴン
+    "げきりん": {"分類": "物理", "威力":120 , "タイプ": "ドラゴン"},
     "ドラゴンクロー": {"分類": "物理", "威力": 80, "タイプ": "ドラゴン"},
     "りゅうせいぐん": {"分類": "特殊", "威力": 130, "タイプ": "ドラゴン"},
 
@@ -445,23 +448,38 @@ type_chart = {
     "フェアリー": {"かくとう":2, "ドラゴン":2, "あく":2, "ほのお":0.5, "どく":0.5, "はがね":0.5},
 }
 
+mag={
+    "0.9":{0.9},
+    "1.0":{1.0},
+    "1.1":{1.1},
+}
+
 # ========================
 # UI
 # ========================
 
 col1, space, col2 = st.columns([6,1,6])
-
 with col1 :
     攻撃ポケモン = st.selectbox("攻撃ポケモン", list(poke_stats.keys()))
-    point_1 = st.slider("攻撃側 基礎ポイント", 0, 32, 0)
-    技 = st.selectbox("技", list(poke_skill.keys()))
-
 with col2 :
     防御ポケモン = st.selectbox("防御ポケモン", list(poke_stats.keys()))
+
+col1,col2, space, col3,col4 = st.columns([5,1,1,1,5])
+with col1 :
+    point_1 = st.slider("攻撃側 基礎ポイント", 0, 32, 0)
+with col2 :
+    atk_mag = st.selectnox("攻撃倍率",list(mag.keys()))
+with col3 :
     point_2 = st.slider("防御側 基礎ポイント", 0, 32, 0)
+with col4 :
+    dif_mag = st.selectnox("防御倍率",list(mag.keys()))
+
+col1,space,col2= st.columns([6,1,6])
+with col1 :
+    技 = st.selectbox("技", list(poke_skill.keys()))
+with col2 :
     point_3 = st.slider("HP 基礎ポイント", 0, 32, 0)
     
-
 # ========================
 # 計算
 # ========================
@@ -479,11 +497,11 @@ if 技 and 攻撃ポケモン and 防御ポケモン:
     hp = poke_stats[防御ポケモン]["stats"][0] + 75 + point_3
 
     if poke_skill[技]["分類"] == "物理":
-        atk2 = poke_stats[攻撃ポケモン]["stats"][1] + 20 + point_1
-        dif1 = poke_stats[防御ポケモン]["stats"][2] + 20 + point_2
+        atk2 = int((poke_stats[攻撃ポケモン]["stats"][1] + 20 + point_1)*atk_mag)
+        dif1 = int((poke_stats[防御ポケモン]["stats"][2] + 20 + point_2)*dif_mag)
     else:
-        atk2 = poke_stats[攻撃ポケモン]["stats"][3] + 20 + point_1
-        dif1 = poke_stats[防御ポケモン]["stats"][4] + 20 + point_2
+        atk2 = int((poke_stats[攻撃ポケモン]["stats"][3] + 20 + point_1)*atk_mag)
+        dif1 = int((poke_stats[防御ポケモン]["stats"][4] + 20 + point_2)*dif_mag)
 
     相性倍率 = calc_multiplier(
         poke_skill[技]["タイプ"],

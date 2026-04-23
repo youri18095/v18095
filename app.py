@@ -656,6 +656,6 @@ if "damage1" in locals() and hp > 0:
     else :
         st.write(f"残りHP: {hp-damage2} ~ {hp-damage1} ")
     
-    st.write(f"ダメージ: {damage_rand[0]} ~ {damage_rand[15]}", f"（{damage3} ~ {damage4}%）")
+    st.write(f"ダメージ: {damage1} ~ {damage_rand[15]}", f"（{damage3} ~ {damage4}%）")
     st.write(f"相性倍率: {相性倍率}")
     st.write(damage_rand)
